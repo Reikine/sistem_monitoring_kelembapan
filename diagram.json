@@ -1,0 +1,218 @@
+{
+    "version": 1,
+    "author": "Rei",
+    "editor": "wokwi",
+    "parts": [
+        {
+            "type": "board-esp32-devkit-c-v4",
+            "id": "esp",
+            "top": 0,
+            "left": 0,
+            "attrs": {}
+        },
+        {
+            "type": "wokwi-potentiometer",
+            "id": "pot-matahari",
+            "top": -90,
+            "left": 130,
+            "attrs": {
+                "label": "Tanah A (Matahari)"
+            }
+        },
+        {
+            "type": "wokwi-potentiometer",
+            "id": "pot-lidahbuaya",
+            "top": -90,
+            "left": 260,
+            "attrs": {
+                "label": "Tanah B (L. Buaya)"
+            }
+        },
+        {
+            "type": "wokwi-dht22",
+            "id": "dht22",
+            "top": -80,
+            "left": 10,
+            "attrs": {}
+        },
+        {
+            "type": "board-ssd1306",
+            "id": "oled",
+            "top": 120,
+            "left": 130,
+            "attrs": {
+                "i2cAddress": "0x3c"
+            }
+        },
+        {
+            "type": "wokwi-led",
+            "id": "led-pompa",
+            "top": 50,
+            "left": 300,
+            "attrs": {
+                "color": "red",
+                "label": "RELAY 1: POMPA"
+            }
+        },
+        {
+            "type": "wokwi-led",
+            "id": "led-selector",
+            "top": 120,
+            "left": 300,
+            "attrs": {
+                "color": "green",
+                "label": "RELAY 2: SELECTOR (Mati=A, Hdp=B)"
+            }
+        }
+    ],
+    "connections": [
+        [
+            "esp:TX",
+            "$serialMonitor:RX",
+            "",
+            []
+        ],
+        [
+            "esp:RX",
+            "$serialMonitor:TX",
+            "",
+            []
+        ],
+        [
+            "pot-matahari:GND",
+            "esp:GND.1",
+            "black",
+            [
+                "v0"
+            ]
+        ],
+        [
+            "pot-matahari:VCC",
+            "esp:3V3",
+            "red",
+            [
+                "v0"
+            ]
+        ],
+        [
+            "pot-matahari:SIG",
+            "esp:34",
+            "orange",
+            [
+                "v0"
+            ]
+        ],
+        [
+            "pot-lidahbuaya:GND",
+            "esp:GND.2",
+            "black",
+            [
+                "v0"
+            ]
+        ],
+        [
+            "pot-lidahbuaya:VCC",
+            "esp:3V3",
+            "red",
+            [
+                "v0"
+            ]
+        ],
+        [
+            "pot-lidahbuaya:SIG",
+            "esp:35",
+            "yellow",
+            [
+                "v0"
+            ]
+        ],
+        [
+            "dht22:GND",
+            "esp:GND.1",
+            "black",
+            [
+                "v0"
+            ]
+        ],
+        [
+            "dht22:VCC",
+            "esp:3V3",
+            "red",
+            [
+                "v0"
+            ]
+        ],
+        [
+            "dht22:SDA",
+            "esp:4",
+            "blue",
+            [
+                "v0"
+            ]
+        ],
+        [
+            "oled:GND",
+            "esp:GND.2",
+            "black",
+            [
+                "v0"
+            ]
+        ],
+        [
+            "oled:VCC",
+            "esp:3V3",
+            "red",
+            [
+                "v0"
+            ]
+        ],
+        [
+            "oled:SDA",
+            "esp:21",
+            "purple",
+            [
+                "v0"
+            ]
+        ],
+        [
+            "oled:SCL",
+            "esp:22",
+            "cyan",
+            [
+                "v0"
+            ]
+        ],
+        [
+            "led-pompa:A",
+            "esp:26",
+            "red",
+            [
+                "v0"
+            ]
+        ],
+        [
+            "led-pompa:C",
+            "esp:GND.3",
+            "black",
+            [
+                "v0"
+            ]
+        ],
+        [
+            "led-selector:A",
+            "esp:27",
+            "green",
+            [
+                "v0"
+            ]
+        ],
+        [
+            "led-selector:C",
+            "esp:GND.3",
+            "black",
+            [
+                "v0"
+            ]
+        ]
+    ]
+}
